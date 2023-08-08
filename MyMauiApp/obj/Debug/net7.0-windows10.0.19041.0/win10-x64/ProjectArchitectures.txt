@@ -1,0 +1,1 @@
+D:\Hamza EL HAMMOUDI Software Development\Maui\MyMauiApp\MyMauiApp\MyMauiApp.csproj;x64

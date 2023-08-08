@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyMauiApp.BookPage"
+             Title="Book Management"  BackgroundColor="#F5F5F5" >
+
+    <StackLayout Margin="10">
+
+
+
+
+        <Label Text="Book Title" HorizontalOptions="FillAndExpand" VerticalOptions="Center" FontAttributes="Bold" FontSize="16" Margin="5,10,0,0" TextColor="Black" />
+
+        <Border StrokeThickness="1" StrokeShape="RoundRectangle 100,100,100,100" Padding="2,2" BackgroundColor="#FFFFFF">
+            <Entry Placeholder="Book Title" x:Name="titleEntry" TextColor="Black" HorizontalOptions="Center" />
+        </Border>
+
+
+        <Label  Text="Author Name" HorizontalOptions="FillAndExpand" VerticalOptions="Center" FontAttributes="Bold" FontSize="16" Margin="5,10,0,0" TextColor="Black" />
+
+        <Border StrokeThickness="1" StrokeShape="RoundRectangle 100,100,100,100" Padding="2,2" BackgroundColor="#FFFFFF">
+            <Entry Placeholder="Author Name" x:Name="authorEntry" TextColor="Black" HorizontalOptions="Center"  />
+        </Border>
+
+
+        <Label Grid.Column="0" Text="Date of Publishing" HorizontalOptions="FillAndExpand" VerticalOptions="Center" FontAttributes="Bold" FontSize="16" Margin="5,10,0,0" TextColor="Black" />
+
+
+        <Border Grid.Column="1" StrokeThickness="1" StrokeShape="RoundRectangle 100,100,100,100" Padding="2,2" BackgroundColor="#FFFFFF">
+            <DatePicker x:Name="publishingdate" TextColor="Black" HorizontalOptions="Center"  Format="dd-MM-yyyy" />
+        </Border>
+
+
+        <Grid Margin="0,10,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+
+            <Button Grid.Column="0" Margin="0,0,1,0" Text="Insert Book" x:Name="btnSave" Clicked="OnInsertClicked" CornerRadius="30" TextColor="White" FontSize="Medium" FontAttributes="Bold" TextTransform="None" HorizontalOptions="FillAndExpand" >
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="1,0">
+                        <GradientStop Color="#82C26E" Offset="0.1" />
+                        <GradientStop Color="#5CB270" Offset="1.0" />
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+
+
+            <Button Grid.Column="1" Margin="1,0,0,0" Text="Update Book" x:Name="btnupdate" Clicked="OnUpdateClicked" CornerRadius="30" TextColor="White" FontSize="Medium" FontAttributes="Bold" TextTransform="None" HorizontalOptions="FillAndExpand" >
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="1,0">
+                        <GradientStop Color="#03a9f4" Offset="0.1" />
+                        <GradientStop Color="#3498DB" Offset="1.0" />
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+
+          
+
+        </Grid>
+
+
+        <Label  Text="Book's List" HorizontalTextAlignment="Center" FontAttributes="Bold"   TextColor="Black"  FontSize="25" Margin="0,15,0,0"/>
+
+
+  
+                <Grid BackgroundColor="#3498DB" Margin="3" Padding="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+                    <Label
+                Grid.Column="0"
+                Text="Title"
+                HorizontalOptions="Fill"
+                TextColor="White"
+                FontSize="Medium"
+                FontAttributes="Bold"
+                HorizontalTextAlignment="Center"
+                Margin="1" />
+                    <Label
+                Grid.Column="1"
+                Text="Author"
+                HorizontalOptions="Fill"
+                TextColor="White"
+                FontSize="Medium"
+                FontAttributes="Bold"
+                HorizontalTextAlignment="Center"
+                Margin="1" />
+                    <Label
+                Grid.Column="2"
+                Text="Date"
+                HorizontalOptions="Fill"
+                TextColor="White"
+                FontSize="Medium"
+                FontAttributes="Bold"
+                HorizontalTextAlignment="Center"
+                Margin="1" />
+                    <Label
+                Grid.Column="3"
+                Text="Action"
+                HorizontalOptions="Fill"
+                TextColor="White"
+                FontSize="Medium"
+                FontAttributes="Bold"
+                HorizontalTextAlignment="Center"
+                Margin="1" />
+                </Grid>
+
+        <ListView x:Name="bookListView" ItemSelected="OnBookSelected" HasUnevenRows="True" SeparatorVisibility="Default"  >
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid BackgroundColor="#F5F5F5" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+                            <Label
+                        Grid.Column="0"
+                        Text="{Binding Title}"
+                        TextColor="Black"
+                        HorizontalOptions="Fill"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        Margin="5">
+                                <Label.BackgroundColor>
+                                    <Color>#FFFFFF</Color>
+                                </Label.BackgroundColor>
+                            </Label>
+                            <Label
+                        Grid.Column="1"
+                        Text="{Binding Author}"
+                        TextColor="Black"
+                        HorizontalOptions="Fill"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        Margin="5">
+                                <Label.BackgroundColor>
+                                    <Color>#FFFFFF</Color>
+                                </Label.BackgroundColor>
+                            </Label>
+                            <Label
+                        Grid.Column="2"
+                        Text="{Binding DateofPublishing, StringFormat='{0:dd-MM-yyyy}'}"
+                        TextColor="Black"
+                        HorizontalOptions="Fill"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        Margin="5">
+                                <Label.BackgroundColor>
+                                    <Color>#FFFFFF</Color>
+                                </Label.BackgroundColor>
+                            </Label>
+                            <Button
+                        Grid.Column="3"
+                        Text="Delete"
+                                BackgroundColor="White"
+                        Clicked="OnDeleteItemClicked"
+                        CommandParameter="{Binding .}"
+                        HorizontalOptions="Fill"
+                        TextColor="Red"
+                        Margin="5"
+                                FontSize="12"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </StackLayout>
+</ContentPage>
